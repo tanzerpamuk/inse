@@ -3,18 +3,46 @@
     <head lang=en>
         <title>SplitMate</title>
         
+        <link href="https://fonts.googleapis.com/css?family=Neuton:800|Open+Sans:400,700" rel="stylesheet">
         <link href=main.css rel=stylesheet title=main>
         <script src="main.js"></script>
     </head>
     <body>
         <main>
-            <h1>Splitmate</h1>
-            <h2>Split your bills. Quickly.</h2>
-            <ol id=nav>
-                <li>Home</li>
-                <li>Help</li>
-            </ol>
-            <p class=hello>some text</p>
+            <header>
+                <img src="images/logo.png" id=logo />
+                <h1>SplitMate</h1>
+                <h2>Bills made simple.</h2>
+            </header>
+            <nav>
+                <ul>
+                    <a href=help.html><li id=last>Help</li></a>
+                    <a href=about.html><li>About</li></a>
+                    <a href=#><li>Home</li></a>
+                </ul>
+            </nav>
+            <article>
+                <h3>Create an account or log in.</h3>
+                <button id=create class=blue>Create Account</button>
+                <h3>Already have an account?</h3>
+                <input type=text name=username value=Username autocomplete=on>
+                <br>
+                <input type=password name=password value=password autocomplete=on>
+                <br>
+                <button id=logon class=blue>Log in</button>
+                <br>
+                <button id=forgotpass class=grey>Forgotten log in information?</button>
+                
+            </article>
+            <leftbar>
+                <p>what</p>
+            </leftbar>
+            <rightbar>
+                <p>again</p>
+            </rightbar>
+            <footer>
+                <h3>Oh cool man</h3>
+            </footer>
         </main>
     </body>
 </html>
