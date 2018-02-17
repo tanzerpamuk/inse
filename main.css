@@ -77,7 +77,8 @@ h3 {
 
 article {
     grid-area: article;
-    text-align: center;
+    text-align: left;
+    font-size: 14px;
 }
 
 nav {
@@ -158,12 +159,14 @@ ul a li:hover {
 }
 
 .blue {
-    font-size: 2em;
-    font-weight: 700;
+    width: 100%;
+    font-size: 14px;
     background-color: #178178;
-    color: #f5f5f5;
-    border-color: #5D8989;
-    border-radius: 8px;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
     -webkit-transition-duration: 0.4s;
     
 }
@@ -171,4 +174,14 @@ ul a li:hover {
 .blue:hover {
     background-color: #b7b7b7;
     color: #178178;
+}
+
+input[type=text], [type=email], [type=password], select {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
