@@ -99,6 +99,7 @@ footer {
     border-top-style: solid;
     border-top-width: medium;
     border-top-color: #b7b7b7;
+    text-align: center;
 }
 
 leftbar {
@@ -184,4 +185,16 @@ input[type=text], [type=email], [type=password], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+footer > p > a {
+    text-decoration: none;
+    color: #178178;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    -webkit-transition-duration: 0.4s;
+}
+
+footer > p > a:hover {
+    color: #b7b7b7;
 }

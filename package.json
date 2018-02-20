@@ -1,0 +1,22 @@
+{
+  "name": "inse",
+  "version": "1.0.0",
+  "description": "Bill splitting app, for group coursework.",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdinos/inse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdinos/inse/issues"
+  },
+  "homepage": "https://github.com/mdinos/inse#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
