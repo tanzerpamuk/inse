@@ -21,7 +21,7 @@ async function loginClicked() {
   const logmein = '/api/login';
   const response = await fetch(logmein);
 
-  
+  // CODE TO BE ADDED HERE
 
   let username = document.getElementById("usernamein").value;
   let password = document.getElementById("passwordin").value;
