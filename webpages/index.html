@@ -23,16 +23,26 @@
             </nav>
             <article>
                 <h3>Sign In</h3>
-                <input type=text name=username placeholder="Username" autocomplete=on id="usernamein">
-                <br>
-                <input type=password name=password placeholder="Password" autocomplete=on id="passwordin">
-                <br>
-                <button type="submit" id="logon" class=blue>Log in</button>
-                <br>
-                Forgotten log in information? <a href=recovery.html style="text-decoration: none;">Click here</a>
-                <br>
+                <form>
+                    <input 
+                           type=text 
+                           name=username 
+                           placeholder="Username" 
+                           autocomplete=on 
+                           required
+                           pattern=[A-Za-z0-9]{4,15}>
+                    <input 
+                           type=password 
+                           name=password 
+                           placeholder="Password" 
+                           autocomplete=on
+                           required
+                           pattern=^(?=.*\d).{6,30}$>
+                    <button type="submit" id=logon class=blue>Log in</button>
+                </form>
+                <a href=recovery.html>Forgotten log in information?</a>
                 <hr>
-                <a href=signup.html><button id="create" class=blue>Create Account</button></a>
+                <a href=signup.html><button id=create class=blue>Create Account</button></a>
             </article>
             <footer>
                 <p>
