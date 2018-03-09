@@ -2,29 +2,34 @@
 
 const express = require('express');
 const app = express();
-const db = require('./model-mysql');
-
-app.listen(8080, (err) => {
-  if (err) console.log('error starting server', err);
-  else console.log('server started');
-});
+const GoogleAuth = require('simple-google-openid');
+const path = require('path');
 
 app.use('/', express.static('../webpages', { extensions: ['html'] }));
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}!`);
+});
+
+
+// GOOGLE SHIT //
+
+app.use(GoogleAuth('970239039977-e085je51cdsf0191okl0kr1u8ks4u6l7.apps.googleusercontent.com'));
+app.use('/api', GoogleAuth.guardMiddleware());
 
 // SERVER FUNCTIONS //
 
 app.get('/api/login', login);
+app.get('/api/hello', hello);
 
-async function login(req, res) {
-  try {
-    const loginstatus = await db.login(req.query.username, req.query.password);
-    res.send(loginstatus);
-  } catch (e) {
-    error (res, e);
-  }
+
+function hello(req, res) {
+  res.send('Hello ' + (req.user.displayName || 'user without a name') + '!');
+  console.log('successful authenticated request by ' + req.user.emails[0].value);
 }
 
-function error (res, msg) {
-  res.sendStatus(500);
-  console.error(msg);
+function login (req, res) {
+  res.sendFile('main.html', {root: '../webpages'});
+  console.log('main.html sent');
 }

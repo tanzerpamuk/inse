@@ -1,5 +1,3 @@
-'use-strict'
-
 // test function to ensure the QUnit tests are working properly
 function isEven(n) {
     if (n % 2 == 0) {
@@ -9,3 +7,100 @@ function isEven(n) {
         return false;
     }
 };
+
+function onSignIn(googleUser) {
+
+  let auth2 = gapi.auth2.getAuthInstance();
+  localStorage.setItem("id_token",auth2.currentUser.get().getAuthResponse().id_token);
+  auth2.disconnect();
+  console.log("id_token:");
+  console.log(localStorage.id_token);
+
+  callServer(googleUser);
+}
+
+async function callServer(googleUser) {
+  const token = localStorage.getItem("id_token");
+  console.log("call server's ID token: ");
+  console.log(token);
+
+  const fetchOptions = {
+    //credentials: 'same-origin',
+    method: 'GET',
+    headers: { 'Authorization': 'Bearer ' + token },
+  };
+
+  console.log("fetch options for api/login: ");
+  console.log(fetchOptions);
+
+  const response = await fetch('/api/login', fetchOptions);
+  if (!response.ok) {
+    // handle the error
+    console.log("fetch response for /api/login has failed.");
+    return;
+  }
+
+  // handle the response
+  console.log("/api/login successful");
+  let innerhtml = await response.text();
+  console.log("innerhtml:")
+  console.log(innerhtml);
+  document.documentElement.innerHTML = innerhtml;
+
+  populateMain(googleUser);
+  //$('html').innerHTML = innerhtml;
+}
+
+// react to computer sleeps, get a new token; gapi doesn't do this reliably
+// adapted from http://stackoverflow.com/questions/4079115/can-any-desktop-browsers-detect-when-the-computer-resumes-from-sleep/4080174#4080174
+(function () {
+  const CHECK_DELAY = 2000;
+  let lastTime = Date.now();
+
+  setInterval(() => {
+    const currentTime = Date.now();
+    if (currentTime > (lastTime + CHECK_DELAY*2)) {  // ignore small delays
+      gapi.auth2.getAuthInstance().currentUser.get().reloadAuthResponse();
+    }
+    lastTime = currentTime;
+  }, CHECK_DELAY);
+}());
+
+async function populateMain(googleUser) {
+  const profile = googleUser.getBasicProfile();
+  const el = document.getElementById('greeting');
+  el.textContent = ' – Hello ' + profile.getName() + '!';
+
+  // check database to see if this user has records (with emaik)
+    // if yes then load content`
+    // if not then create fields!
+
+  // populate me!
+}
+
+async function signOut() {
+  console.log("entered function");
+  const token = localStorage.getItem("id_token");
+  let auth2 = gapi.auth2.getAuthInstance();
+
+  const fetchOptions = {
+    credentials: 'same-origin',
+    method: 'GET',
+    headers: { 'Authorization': 'Bearer ' + token },
+  };
+
+  const response = await fetch('/api/logout', fetchOptions);
+
+  if (!response.ok) {
+    console.log("fetch reponse for /api/logout has failed.");
+    return;
+  }
+
+  let innerhtml = await response.text();
+  console.log(innerhtml);
+  document.documentElement.innerHTML = innerhtml;
+
+  window.location.reload();
+
+  localStorage.removeItem("id_token");
+}

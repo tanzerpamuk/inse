@@ -23,54 +23,16 @@
             </nav>
             <article>
                 <h3>Create an account</h3>
-                <form>
-                    <label>Username - must be between 4 and 15 characters, numbers and letters only.</label>
-                    <input 
-                        type=text 
-                        name=username 
-                        placeholder="Enter username" 
-                        autocomplete=on 
-                        required 
-                        pattern=[A-Za-z0-9]{4,15}>
-                    <label>Email address</label>
-                    <input 
-                        type=email 
-                        name=email 
-                        placeholder="Enter valid email" 
-                        autocomplete=on 
-                        required>
-                    <label>Confirm email address</label>
-                    <input 
-                        type=email 
-                        name=confrim_email 
-                        placeholder="Re-enter email" 
-                        autocomplete=on 
-                        required>
-                    <label>Password - must be between 6 and 30 characters, and contain at least one number. </label>
-                    <input 
-                        type=password 
-                        name=password 
-                        placeholder="Enter password" 
-                        required
-                        pattern=^(?=.*\d).{6,30}$>
-                    <label>Confirm password</label>
-                    <input 
-                        type=password 
-                        name=confirm_password 
-                        placeholder="Re-enter password" 
-                        required
-                        pattern=^(?=.*\d).{6,30}$>
-                    <br>
-                    <input 
-                           type=checkbox 
-                           name=terms>
-                    I have read and agree to <a href=# style="text-decoration: none;" required>Terms and Conditions</a>.
-                    <button 
-                            type="submit" 
-                            id=signup
-                            class=blue>Sign Up</button>
-                    Already have an account? <a href=index.html style="text-decoration: none;">Login here</a>
-                </form>
+                <p>Please fill in the form below to create an account</p>
+                <hr>
+                Username:<br> <input type=text name=username placeholder="Enter username" autocomplete=on>
+                Email Address:<br> <input type=email name=email placeholder="Enter valid email" autocomplete=on>
+                Confirm Email:<br> <input type=email name=confrim_email placeholder="Re-enter email" autocomplete=on>
+                Password:<br> <input type=password name=password placeholder="Enter password">
+                Confirm Password:<br> <input type=password name=confirm_password placeholder="Re-enter password"><br>
+                <input type=checkbox name=terms>I have read and agree to <a href=# style="text-decoration: none;">Terms and Conditions</a>.
+                <button type="submit" id=signup class=blue >Sign Up</button>
+                Already have an account? <a href=index.html style="text-decoration: none;">Login here</a>
             </article>
             <footer>
                 <p>
