@@ -104,3 +104,16 @@ async function signOut() {
 
   localStorage.removeItem("id_token");
 }
+// Function that creates an event (For now all it does is outputs because we have no DB)
+var createAnEvent = function() {
+  var eventName = (document.getElementById('eventName').value);
+  var eventDescription = (document.getElementById('eventDescription').value);
+  var testBalance = parseInt(document.getElementById('totalSpent').value);
+
+  if(isNaN(testBalance)){
+    output2.textContent = 'You did not enter a number';
+  }
+  else {
+    output2.textContent = 'Event' + eventName + 'Description' + eventDescription + 'Users' + testBalance;
+  }
+};
