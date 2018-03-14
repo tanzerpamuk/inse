@@ -21,6 +21,7 @@ app.use('/api', GoogleAuth.guardMiddleware());
 // SERVER FUNCTIONS //
 
 app.get('/api/login', login);
+app.get('/api/logout', logout);
 app.get('/api/hello', hello);
 
 
@@ -32,4 +33,9 @@ function hello(req, res) {
 function login (req, res) {
   res.sendFile('main.html', {root: '../webpages'});
   console.log('main.html sent');
+}
+
+function logout (req, res) {
+  res.sendFile('index.html', {root: '../webpages'});
+  console.log('index.html sent');
 }

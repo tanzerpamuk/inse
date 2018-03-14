@@ -104,6 +104,9 @@ async function signOut() {
 
   localStorage.removeItem("id_token");
 }
+
+
+
 // Function that creates an event (For now all it does is outputs because we have no DB)
 var createAnEvent = function() {
   var eventName = (document.getElementById('eventName').value);
